@@ -1,4 +1,4 @@
-# `cipher-lab` // Classical Cryptanalysis & Modular Arithmetic Workbench
+# `cipher-lab` ≡ Classical Cryptanalysis & Modular Arithmetic Workbench
 
 > `STATUS: ONLINE` · `ENGINE: Z26 PURE ARITHMETIC` · `SELF-CHECK: 375/375 PASSED` · `NETWORK: ISOLATED (connect-src 'none')`
 
@@ -16,7 +16,7 @@
 
 ---
 
-## 01 // Core Capabilities & Panes
+## 01 ≡ Core Capabilities & Panes
 
 The interface is organized into three primary workspaces, navigable via top-level routes or the `Ctrl+K` Command Palette:
 
@@ -39,7 +39,7 @@ The interface is organized into three primary workspaces, navigable via top-leve
 
 ---
 
-## 02 // Mathematical Foundations
+## 02 ≡ Mathematical Foundations
 
 | Cipher | Encryption $E(x)$ | Decryption $D(y)$ | Legal Key Space $\|K\|$ | Number-Theoretic Condition |
 | :--- | :--- | :--- | :--- | :--- |
@@ -49,7 +49,7 @@ The interface is organized into three primary workspaces, navigable via top-leve
 
 ---
 
-## 03 // Repository Architecture
+## 03 ≡ Repository Architecture
 
 The codebase enforces a strict separation between pure discrete mathematics and UI rendering:
 
@@ -78,7 +78,7 @@ cipher-lab/
 
 ---
 
-## 04 // Quickstart & Commands
+## 04 ≡ Quickstart & Commands
 
 ### Local Development
 ```bash
@@ -114,7 +114,7 @@ bash scripts/verify-docker.sh
 
 ---
 
-## 05 // Keyboard Shortcuts
+## 05 ≡ Keyboard Shortcuts
 
 | Shortcut | Action |
 | :--- | :--- |
@@ -125,7 +125,7 @@ bash scripts/verify-docker.sh
 
 ---
 
-## 06 // Roadmap & Future Extensions
+## 06 ≡ Roadmap & Future Extensions
 
 * **Polyalphabetic Ciphers**: Vigenère encryption with Kasiski examination and Friedman IC key-length estimation.
 * **Matrix Cryptography**: Hill cipher over $GL_n(\mathbb{Z}_{26})$ requiring $\gcd(\det(K), 26) = 1$.
