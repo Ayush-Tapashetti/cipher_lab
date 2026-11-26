@@ -1,0 +1,52 @@
+{
+  "problem": "A first-year discrete-math student (and the faculty evaluating them) needs to see how modular arithmetic encrypts text and how letter-frequency statistics break it, because textbook cipher exercises are static and hide the math, so the app encrypts and decrypts with Caesar, affine and substitution ciphers live, shows every step as arithmetic in Z26, and cracks a sample ciphertext by frequency analysis, producing the recovered plaintext, the recovered key and the reasoning behind it.",
+  "core_journey": [
+    "Type or paste plaintext, pick a cipher and a key, and watch the ciphertext update live with each letter's modular arithmetic shown.",
+    "Paste (or load the bundled sample) ciphertext and see its letter-frequency histogram next to the English reference.",
+    "Run the break: get ranked key candidates, the recovered plaintext and an explanation of why that key won."
+  ],
+  "personas": [
+    { "id": "p1", "role": "Student presenter", "skill_level": "first-year CS/AI, learning modular arithmetic", "moment": "building and demoing the project; capturing screenshots for the report" },
+    { "id": "p2", "role": "Evaluator (faculty)", "skill_level": "comfortable with discrete math", "moment": "short demo, checking the math is correct and visible" }
+  ],
+  "deployment": "desktop-web",
+  "model_backed": false,
+  "deterministic": [
+    "caesar/affine/substitution encrypt and decrypt",
+    "key validation (shift range, gcd(a,26)=1, permutation check)",
+    "modular inverse mod 26",
+    "letter counts, relative frequencies, index of coincidence",
+    "chi-squared scoring of candidate keys",
+    "candidate ranking",
+    "step-by-step math trace and key-space counts"
+  ],
+  "model": [],
+  "hard_limits": [
+    { "text": "Deliverable is a website", "level": "hard" },
+    { "text": "Cipher operations expressed as modular arithmetic on Z26 and the math is visible in the UI", "level": "hard" },
+    { "text": "decrypt(encrypt(m,k),k)=m for every valid key; invalid keys rejected with a reason", "level": "hard" },
+    { "text": "User text never leaves the browser session and is never stored", "level": "hard" },
+    { "text": "Non-letters pass through unchanged; letter case preserved", "level": "hard" },
+    { "text": "Interactive response under 100 ms for texts up to 5000 characters", "level": "soft" },
+    { "text": "Free static or single-container hosting", "level": "soft" },
+    { "text": "English-only frequency reference", "level": "soft" },
+    { "text": "Containers allowed but not required", "level": "soft" }
+  ],
+  "signals": {
+    "heavy_interactivity": true,
+    "realtime_required": false,
+    "offline_first": false,
+    "visual_polish": "high",
+    "multi_user": false,
+    "needs_identity": false,
+    "seo_required": false,
+    "containers_allowed": true
+  },
+  "assumptions": [
+    "Scope: Caesar, affine and simple substitution; automated break for Caesar and affine, assisted break for substitution",
+    "Alphabet is the 26 English letters (A=0 ... Z=25)",
+    "A short Caesar-shifted English sample ciphertext is bundled",
+    "No persistence; whether a backend exists is a Step 4 decision",
+    "Group details belong in the report cover page, not the app"
+  ]
+}

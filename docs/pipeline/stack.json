@@ -1,0 +1,33 @@
+{
+  "backend": {
+    "mode": "none",
+    "reason": "All logic is pure TypeScript run in the browser; Step 1 hard limit says user text never leaves the browser. User chose 'no backend, engine isolated' on 2026-11-23."
+  },
+  "database": { "engine": "none" },
+  "domain": {
+    "language": "typescript",
+    "location": "packages/engine",
+    "package_name": "@cipher-lab/engine",
+    "pure": true,
+    "zero_runtime_dependencies": true
+  },
+  "workspace": { "manager": "npm-workspaces", "packages": ["packages/engine", "frontend"] },
+  "frontend": {
+    "framework": "vite-react",
+    "language": "typescript-strict",
+    "router": "react-router (history mode)",
+    "state": "zustand",
+    "styling": "tailwind",
+    "realtime": "none"
+  },
+  "auth": { "mode": "none" },
+  "seo": { "mode": "none" },
+  "interactivity": "experimental",
+  "model_backed": false,
+  "containers": { "enabled": true, "entry_port": 8080, "services": ["frontend"] },
+  "future_backend": {
+    "status": "not planned for this submission",
+    "growth_path": "Challenge Mode, saved workspaces and accounts can be added next year as a server that imports @cipher-lab/engine unchanged; reopen Step 4 and Step 2 (FEAT-AUTH) when that starts"
+  },
+  "runtime": { "node": "24", "typescript": "6.0.3", "target": "ES2022" }
+}

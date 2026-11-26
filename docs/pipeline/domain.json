@@ -1,0 +1,759 @@
+{
+  "id_strategy": "uuid",
+  "entities": [
+    {
+      "name": "CipherKey",
+      "features": [
+        "FEAT-001",
+        "FEAT-002"
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "cipher_type",
+          "type": "enum(caesar,affine,substitution)",
+          "nullable": false
+        },
+        {
+          "name": "shift",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "affine_a",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "affine_b",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "substitution_map",
+          "type": "string(26)",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false
+        }
+      ],
+      "relations": [],
+      "indexes": []
+    },
+    {
+      "name": "Message",
+      "features": [
+        "FEAT-001",
+        "FEAT-002",
+        "FEAT-003"
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "role",
+          "type": "enum(plaintext,ciphertext)",
+          "nullable": false
+        },
+        {
+          "name": "text",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "letter_count",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "key_id",
+          "type": "uuid",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false
+        }
+      ],
+      "relations": [
+        {
+          "to": "CipherKey",
+          "kind": "many-to-one",
+          "on_delete": "set null"
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "key_id",
+            "created_at"
+          ],
+          "query": "list messages produced with a given key, newest first (session history panel)"
+        }
+      ]
+    },
+    {
+      "name": "FrequencyProfile",
+      "features": [
+        "FEAT-003",
+        "FEAT-004"
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "message_id",
+          "type": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "counts",
+          "type": "int[26]",
+          "nullable": false
+        },
+        {
+          "name": "total_letters",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "relative_freq",
+          "type": "float[26]",
+          "nullable": false
+        },
+        {
+          "name": "index_of_coincidence",
+          "type": "float",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false
+        }
+      ],
+      "relations": [
+        {
+          "to": "Message",
+          "kind": "one-to-one",
+          "on_delete": "cascade"
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "message_id"
+          ],
+          "query": "fetch the frequency profile of a message"
+        }
+      ]
+    },
+    {
+      "name": "BreakCandidate",
+      "features": [
+        "FEAT-004"
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "profile_id",
+          "type": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "key_id",
+          "type": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "chi_squared",
+          "type": "float",
+          "nullable": false
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "plaintext_preview",
+          "type": "string(120)",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "enum(ranked,selected,rejected)",
+          "nullable": false
+        }
+      ],
+      "relations": [
+        {
+          "to": "FrequencyProfile",
+          "kind": "many-to-one",
+          "on_delete": "cascade"
+        },
+        {
+          "to": "CipherKey",
+          "kind": "many-to-one",
+          "on_delete": "cascade"
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "profile_id",
+            "rank"
+          ],
+          "query": "list candidates of a profile ordered by rank for the ranked table"
+        }
+      ]
+    },
+    {
+      "name": "Trace",
+      "features": [
+        "FEAT-005"
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "message_id",
+          "type": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "key_id",
+          "type": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "direction",
+          "type": "enum(encrypt,decrypt)",
+          "nullable": false
+        },
+        {
+          "name": "rows",
+          "type": "json(TraceRow[])",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false
+        }
+      ],
+      "relations": [
+        {
+          "to": "Message",
+          "kind": "many-to-one",
+          "on_delete": "cascade"
+        },
+        {
+          "to": "CipherKey",
+          "kind": "many-to-one",
+          "on_delete": "cascade"
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "message_id",
+            "created_at"
+          ],
+          "query": "open the latest trace for a message in the Math Lab"
+        }
+      ]
+    }
+  ],
+  "state_machines": [
+    {
+      "entity": "BreakCandidate",
+      "states": [
+        "ranked",
+        "selected",
+        "rejected"
+      ],
+      "initial": "ranked",
+      "transitions": [
+        {
+          "from": "ranked",
+          "event": "select",
+          "to": "selected",
+          "guard": "no other candidate of the profile is selected"
+        },
+        {
+          "from": "selected",
+          "event": "deselect",
+          "to": "ranked",
+          "guard": "none"
+        },
+        {
+          "from": "ranked",
+          "event": "reject",
+          "to": "rejected",
+          "guard": "none"
+        },
+        {
+          "from": "rejected",
+          "event": "restore",
+          "to": "ranked",
+          "guard": "none"
+        },
+        {
+          "from": "selected",
+          "event": "select_other",
+          "to": "ranked",
+          "guard": "another candidate of the profile was selected"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "mod",
+      "signature": "(a: int, n: int) -> int",
+      "features": [
+        "FEAT-001",
+        "FEAT-005"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidModulus",
+        "NotAnInteger"
+      ]
+    },
+    {
+      "name": "gcd",
+      "signature": "(a: int, b: int) -> int",
+      "features": [
+        "FEAT-001",
+        "FEAT-005"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "modInverse",
+      "signature": "(a: int, n: int) -> int",
+      "features": [
+        "FEAT-001",
+        "FEAT-005",
+        "DIFF-004",
+        "DIFF-005"
+      ],
+      "deterministic": true,
+      "errors": [
+        "NoModularInverse"
+      ]
+    },
+    {
+      "name": "validateKey",
+      "signature": "(key: KeySpec) -> ValidKey",
+      "features": [
+        "FEAT-001",
+        "FEAT-002"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidShift",
+        "NotCoprimeWith26",
+        "NotAPermutation"
+      ]
+    },
+    {
+      "name": "invertSubstitution",
+      "signature": "(map: string) -> string",
+      "features": [
+        "FEAT-002"
+      ],
+      "deterministic": true,
+      "errors": [
+        "NotAPermutation"
+      ]
+    },
+    {
+      "name": "encrypt",
+      "signature": "(text: string, key: ValidKey) -> string",
+      "features": [
+        "FEAT-001",
+        "FEAT-002"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidKey"
+      ]
+    },
+    {
+      "name": "decrypt",
+      "signature": "(text: string, key: ValidKey) -> string",
+      "features": [
+        "FEAT-001",
+        "FEAT-002"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidKey"
+      ]
+    },
+    {
+      "name": "traceCipher",
+      "signature": "(text: string, key: ValidKey, direction: Direction) -> TraceRow[]",
+      "features": [
+        "FEAT-005",
+        "DIFF-001"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidKey"
+      ]
+    },
+    {
+      "name": "letterCounts",
+      "signature": "(text: string) -> int[26]",
+      "features": [
+        "FEAT-003"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "relativeFrequencies",
+      "signature": "(counts: int[26]) -> float[26]",
+      "features": [
+        "FEAT-003"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "indexOfCoincidence",
+      "signature": "(counts: int[26]) -> float | null",
+      "features": [
+        "FEAT-003"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "chiSquared",
+      "signature": "(counts: int[26], expected: float[26]) -> float",
+      "features": [
+        "FEAT-004",
+        "DIFF-003"
+      ],
+      "deterministic": true,
+      "errors": [
+        "EmptyText"
+      ]
+    },
+    {
+      "name": "rankCaesarCandidates",
+      "signature": "(ciphertext: string) -> BreakCandidateData[]",
+      "features": [
+        "FEAT-004",
+        "DIFF-003"
+      ],
+      "deterministic": true,
+      "errors": [
+        "EmptyText"
+      ]
+    },
+    {
+      "name": "rankAffineCandidates",
+      "signature": "(ciphertext: string) -> BreakCandidateData[]",
+      "features": [
+        "FEAT-004",
+        "DIFF-003"
+      ],
+      "deterministic": true,
+      "errors": [
+        "EmptyText"
+      ]
+    },
+    {
+      "name": "breakConfidence",
+      "signature": "(totalLetters: int, bestScore: float, secondScore: float) -> Confidence",
+      "features": [
+        "FEAT-004"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "transitionCandidate",
+      "signature": "(state: CandidateState, event: CandidateEvent) -> CandidateState",
+      "features": [
+        "FEAT-004"
+      ],
+      "deterministic": true,
+      "errors": [
+        "IllegalTransition"
+      ]
+    },
+    {
+      "name": "keySpaceSize",
+      "signature": "(cipher: CipherType) -> bigint",
+      "features": [
+        "FEAT-005",
+        "DIFF-006"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "unitsModN",
+      "signature": "(n: int) -> int[]",
+      "features": [
+        "FEAT-005",
+        "DIFF-004"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidModulus"
+      ]
+    },
+    {
+      "name": "elementOrder",
+      "signature": "(a: int, n: int, op: 'add' | 'mul') -> int",
+      "features": [
+        "DIFF-004"
+      ],
+      "deterministic": true,
+      "errors": [
+        "NotAUnit"
+      ]
+    },
+    {
+      "name": "generators",
+      "signature": "(n: int, op: 'add' | 'mul') -> int[]",
+      "features": [
+        "DIFF-004"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "solveAffineFromPairs",
+      "signature": "(p1: Pair, p2: Pair) -> AffineKey[]",
+      "features": [
+        "DIFF-005"
+      ],
+      "deterministic": true,
+      "errors": [
+        "NoSolution",
+        "IdenticalPlaintexts",
+        "InvalidParameter"
+      ]
+    },
+    {
+      "name": "unicityDistance",
+      "signature": "(keySpaceBits: float, redundancyBitsPerLetter: float) -> float",
+      "features": [
+        "DIFF-006"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidRedundancy"
+      ]
+    },
+    {
+      "name": "breakSuccessRate",
+      "signature": "(corpus: string[], cipher: 'caesar' | 'affine', length: int, trials: int, rng: Rng) -> float",
+      "features": [
+        "DIFF-006"
+      ],
+      "deterministic": true,
+      "errors": [
+        "CorpusTooShort",
+        "InvalidParameter"
+      ]
+    },
+    {
+      "name": "seededRng",
+      "signature": "(seed: int) -> Rng",
+      "features": [
+        "DIFF-006"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "runExhaustiveChecks",
+      "signature": "() -> CheckReport",
+      "features": [
+        "DIFF-002"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "extendedGcd",
+      "signature": "(a: int, b: int) -> { g: int, x: int, y: int }",
+      "features": [
+        "FEAT-005",
+        "DIFF-005"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "euclidSteps",
+      "signature": "(a: int, b: int) -> EuclidStep[]",
+      "features": [
+        "FEAT-005",
+        "DIFF-001"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "totient",
+      "signature": "(n: int) -> int",
+      "features": [
+        "FEAT-005",
+        "DIFF-004"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidModulus"
+      ]
+    },
+    {
+      "name": "solveLinearCongruence",
+      "signature": "(a: int, b: int, n: int) -> int[]",
+      "features": [
+        "DIFF-005"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidModulus"
+      ]
+    },
+    {
+      "name": "enumerateKeys",
+      "signature": "(cipher: 'caesar' | 'affine') -> ValidBreakableKey[]",
+      "features": [
+        "FEAT-004",
+        "DIFF-002",
+        "DIFF-006"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "mapLetter",
+      "signature": "(x: int, key: ValidKey, direction: Direction) -> int",
+      "features": [
+        "FEAT-001",
+        "FEAT-002",
+        "FEAT-004",
+        "FEAT-005"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidKey"
+      ]
+    },
+    {
+      "name": "totalLetters",
+      "signature": "(counts: int[26]) -> int",
+      "features": [
+        "FEAT-003"
+      ],
+      "deterministic": true,
+      "errors": []
+    },
+    {
+      "name": "scoreKeys",
+      "signature": "(ciphertext: string, keys: ValidBreakableKey[]) -> { key, chiSquared }[]",
+      "features": [
+        "FEAT-004",
+        "DIFF-006"
+      ],
+      "deterministic": true,
+      "errors": [
+        "EmptyText"
+      ]
+    },
+    {
+      "name": "selectInProfile",
+      "signature": "(states: CandidateState[], index: int) -> CandidateState[]",
+      "features": [
+        "FEAT-004"
+      ],
+      "deterministic": true,
+      "errors": [
+        "IllegalTransition"
+      ]
+    },
+    {
+      "name": "orbit",
+      "signature": "(a: int, n: int, op: 'add' | 'mul') -> int[]",
+      "features": [
+        "DIFF-004"
+      ],
+      "deterministic": true,
+      "errors": [
+        "NotAUnit",
+        "InvalidModulus"
+      ]
+    },
+    {
+      "name": "cayleyTable",
+      "signature": "(elements: int[], n: int, op: 'add' | 'mul') -> int[][]",
+      "features": [
+        "DIFF-004"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidModulus"
+      ]
+    },
+    {
+      "name": "log2BigInt",
+      "signature": "(n: bigint) -> float",
+      "features": [
+        "DIFF-006"
+      ],
+      "deterministic": true,
+      "errors": [
+        "InvalidParameter"
+      ]
+    },
+    {
+      "name": "keySpaceBits",
+      "signature": "(cipher: CipherType) -> float",
+      "features": [
+        "DIFF-006"
+      ],
+      "deterministic": true,
+      "errors": []
+    }
+  ]
+}

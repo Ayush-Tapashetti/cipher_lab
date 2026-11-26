@@ -1,0 +1,170 @@
+{
+  "features": [
+    {
+      "id": "FEAT-001",
+      "name": "Caesar and affine cipher with live cipher wheel",
+      "priority": "P0",
+      "kind": "product",
+      "optional": false,
+      "persona": "p1",
+      "behaviour": "User types plaintext, picks Caesar (shift k) or affine (a, b) and sees ciphertext update live on a rotating alphabet wheel; decrypt runs the inverse map",
+      "acceptance": "E(x)=(x+3) mod 26 turns HELLO into KHOOR and decrypting returns HELLO; affine with a=5,b=8 turns AFFINE CIPHER into IHHWVC SWFRCP; an affine key with gcd(a,26)!=1 is rejected with a reason; D(E(m))=m for all 26 shifts and all 312 valid affine keys",
+      "touches_entity": [
+        "CipherKey",
+        "Message"
+      ],
+      "touches_route": [
+        "POST /cipher/encrypt",
+        "POST /cipher/decrypt"
+      ],
+      "interactivity": "high"
+    },
+    {
+      "id": "FEAT-002",
+      "name": "Simple substitution cipher with permutation key editor",
+      "priority": "P0",
+      "kind": "product",
+      "optional": false,
+      "persona": "p1",
+      "behaviour": "User edits a 26-letter substitution key by swapping letters in an alphabet-mapping board; the key must stay a bijection; encrypt and decrypt use the map and its inverse",
+      "acceptance": "A key with a repeated or missing letter is rejected and the duplicate is named; decrypt(encrypt(m)) equals m for a random valid permutation; case and non-letters are preserved",
+      "touches_entity": [
+        "CipherKey",
+        "Message"
+      ],
+      "touches_route": [
+        "POST /cipher/encrypt",
+        "POST /cipher/decrypt",
+        "POST /keys/validate"
+      ],
+      "interactivity": "high"
+    },
+    {
+      "id": "FEAT-003",
+      "name": "Letter-frequency analysis",
+      "priority": "P0",
+      "kind": "product",
+      "optional": false,
+      "persona": "p1",
+      "behaviour": "User pastes ciphertext and sees letter counts, relative frequencies as a histogram beside the English reference, and the index of coincidence",
+      "acceptance": "For input AAB the counts are A=2, B=1 and the others 0; frequencies sum to 1 within 1e-9; non-letters are ignored; empty input returns a clear empty state, not NaN",
+      "touches_entity": [
+        "FrequencyProfile",
+        "Message"
+      ],
+      "touches_route": [
+        "POST /analysis/frequency"
+      ],
+      "interactivity": "high"
+    },
+    {
+      "id": "FEAT-004",
+      "name": "Automated break by frequency analysis",
+      "priority": "P0",
+      "kind": "product",
+      "optional": false,
+      "persona": "p2",
+      "behaviour": "User runs the break on ciphertext; the app scores all 26 shifts (and all 312 affine keys) with a chi-squared test against English, ranks them and shows the winning key with plaintext, while the histogram visibly slides into alignment",
+      "acceptance": "On the bundled sample Caesar ciphertext the top-ranked candidate is the true key and its plaintext equals the original; candidates are sorted by ascending chi-squared; ciphertext shorter than 20 letters returns a low-confidence warning",
+      "touches_entity": [
+        "BreakCandidate",
+        "FrequencyProfile",
+        "CipherKey"
+      ],
+      "touches_route": [
+        "POST /analysis/break"
+      ],
+      "interactivity": "experimental"
+    },
+    {
+      "id": "FEAT-005",
+      "name": "Math Lab: step-by-step modular arithmetic trace",
+      "priority": "P0",
+      "kind": "product",
+      "optional": false,
+      "persona": "p2",
+      "behaviour": "For any encryption or decryption the user can open a per-letter trace (x, key, computation, mod 26, result), the table of units mod 26 with inverses, and key-space counts for each cipher",
+      "acceptance": "Trace rows reproduce the cipher output exactly for every letter; the inverse table lists the 12 units mod 26 with a*a^-1 = 1 mod 26; key-space counts shown are 26 (Caesar), 312 (affine), and 403291461126605635584000000 (substitution, 26!)",
+      "touches_entity": [
+        "Trace",
+        "CipherKey"
+      ],
+      "touches_route": [
+        "POST /cipher/trace"
+      ],
+      "interactivity": "high"
+    }
+  ],
+  "indexable_pages": [],
+  "differentiators": [
+    {
+      "id": "DIFF-001",
+      "name": "Every output is a visible proof step",
+      "why": "The report is graded on the mathematics, so the app shows Z26 arithmetic, modular inverses via gcd and the group structure of shifts rather than just producing ciphertext",
+      "demonstrated_by": "Math Lab panel in the UI plus a unit test asserting trace rows equal cipher output"
+    },
+    {
+      "id": "DIFF-002",
+      "name": "Exhaustive self-verification panel",
+      "why": "Correctness is a hard limit; the app proves D(E(m))=m over every Caesar key and every valid affine key and checks that substitution keys are bijections",
+      "demonstrated_by": "Run-all-checks button in the UI and a property test script that prints pass counts (26 of 26, 312 of 312)"
+    },
+    {
+      "id": "DIFF-003",
+      "name": "Explainable break with chi-squared table",
+      "why": "A break that only shows the answer teaches nothing; showing the score of every candidate key and the sliding histogram explains why one key wins",
+      "demonstrated_by": "Ranked candidate table with chi-squared values and animated histogram alignment on the sample ciphertext"
+    },
+    {
+      "id": "DIFF-004",
+      "name": "Group explorer for Z26",
+      "why": "Shows the algebra behind the ciphers: (Z26,+) is a cyclic group, every unit generates it, and the units mod 26 form a group under multiplication, which is exactly why only 12 values of a work in the affine cipher",
+      "demonstrated_by": "Interactive orbit diagram and Cayley table; clicking an element shows its order and whether it is a generator; unit test asserts 12 units and that each unit has order dividing 12"
+    },
+    {
+      "id": "DIFF-005",
+      "name": "Algebraic key recovery from known plaintext",
+      "why": "A second attack that uses linear congruences instead of statistics: two known plaintext/ciphertext pairs give a(x1-x2) = y1-y2 (mod 26), solved with the modular inverse, and the app flags when gcd(x1-x2,26)>1 gives several solutions",
+      "demonstrated_by": "Known-plaintext panel that recovers (a,b) and lists all solutions when the congruence is not unique; test with the AFFINE CIPHER example"
+    },
+    {
+      "id": "DIFF-006",
+      "name": "Unicity distance and break-success curve",
+      "why": "Connects counting to cryptanalysis: key-space size (26, 312, 26!) determines how much ciphertext is needed before the key is unique, and the app measures how break accuracy rises with text length",
+      "demonstrated_by": "Chart of break success rate versus ciphertext length over random samples, plus the computed unicity distance per cipher; deterministic seeded run so results are reproducible"
+    }
+  ],
+  "p1_deferred": [
+    "Assisted substitution break: map ciphertext letters to English by frequency rank, then swap letters manually with live plaintext preview",
+    "Brute-force table: all 26 Caesar decryptions side by side",
+    "Export frequency charts and Math Lab traces as PNG/CSV for the report screenshots",
+    "Shareable permalink that encodes cipher, key and text in the URL",
+    "Bigram frequency view to help substitution solving"
+  ],
+  "cut": [
+    {
+      "name": "FEAT-AUTH",
+      "reason": "no identity needed (single-user / public / demo)"
+    },
+    {
+      "name": "FEAT-SEO",
+      "reason": "not meant to be found through search"
+    },
+    {
+      "name": "LLM-based cracking",
+      "reason": "defeats the point; the report must show the mathematical method, and everything stays deterministic"
+    },
+    {
+      "name": "Vigenere, Hill, RSA and other ciphers",
+      "reason": "scope creep beyond the brief (Caesar / simple substitution) and the 5-feature cap"
+    },
+    {
+      "name": "Saved history and accounts",
+      "reason": "no persistence or identity needed; user text must not be stored"
+    },
+    {
+      "name": "Non-English frequency tables",
+      "reason": "English-only is a soft limit and the sample text is English"
+    }
+  ]
+}

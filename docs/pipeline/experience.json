@@ -1,0 +1,57 @@
+{
+  "interaction_model": "workspace-split",
+  "supporting": ["command-first"],
+  "signature_interaction": "The Cipher Wheel: two concentric alphabet rings. As you type, the outer ring turns so each plaintext letter lines up with its ciphertext letter, and a live readout shows the arithmetic (x + k) mod 26 for the letter you just typed. Drag the ring or press the arrow keys to change the key and the whole ciphertext updates.",
+  "interactivity": "experimental",
+  "answers": {
+    "first_action": "Type text, watch the cipher wheel turn",
+    "feel": "Hacker / terminal",
+    "density": "Spacious, minimal",
+    "references": []
+  },
+  "visual": {
+    "tone": "hacker terminal, calm and uncluttered",
+    "theme": "dark",
+    "palette": "ink background #0b0f14, surface #111820, border #1e2a36, text #d7e3ee, muted #8a9db0, accent cyan #22d3ee, accent emerald #34d399, warning amber #fbbf24, error #f87171",
+    "type": "JetBrains Mono (bundled, variable) for everything; 16px base, 14px for dense tables",
+    "density": "spacious"
+  },
+  "motion": {
+    "level": "expressive",
+    "reduced_motion": true,
+    "notes": "Spring rotation on the wheel (about 300ms), histogram bars slide into alignment during a break (about 600ms), pane focus fade. With prefers-reduced-motion everything jumps instantly and the readout carries the meaning."
+  },
+  "feedback_rules": [
+    "every keystroke updates ciphertext and the wheel with no submit button and no spinner (all compute is local)",
+    "an invalid key shows an inline reason that states the failed condition, e.g. gcd(13, 26) = 13, not 1, and the last valid output stays visible",
+    "toast (Sonner) only for copy and export confirmations",
+    "a low-confidence break (under 20 letters) shows an amber warning with the reason",
+    "empty input shows a short hint, never NaN or an empty chart"
+  ],
+  "layout": {
+    "default": "focus mode: one large primary pane at a time with a slim rail of the other panes",
+    "alternate": "tile mode: resizable tiling panes for demos and screenshots",
+    "switch": "command palette (Ctrl/Cmd+K) or the keys 1 to 5 and T"
+  },
+  "routes": [
+    { "path": "/", "feature": "FEAT-001", "role": "main workspace: input and output, cipher wheel, substitution board, frequency, trace and break panes (FEAT-001 to FEAT-004)", "indexable": false },
+    { "path": "/math-lab", "feature": "FEAT-005", "role": "Math Lab: units mod 26 with inverses, Cayley table, orbit diagram, key-space counts, step-by-step proofs (FEAT-005, DIFF-001, DIFF-004)", "indexable": false },
+    { "path": "/verify", "feature": "DIFF-002", "role": "Verify: exhaustive round-trip checks, known-plaintext key recovery, unicity distance and success curve (DIFF-002, DIFF-005, DIFF-006)", "indexable": false },
+    { "path": "*", "feature": "FEAT-001", "role": "real NotFound screen with a link back to the workspace", "indexable": false }
+  ],
+  "hero_image_budget_kb": 200,
+  "component_sources": [
+    { "name": "react-resizable-panels", "url": "https://github.com/bvaughn/react-resizable-panels", "license": "MIT", "install": "npm", "use_for": ["tiling panes with draggable dividers and keyboard resize"], "components": ["PanelGroup", "Panel", "PanelResizeHandle"] },
+    { "name": "cmdk", "url": "https://github.com/pacocoursey/cmdk", "license": "MIT", "install": "npm", "use_for": ["command palette: switch cipher, load sample, run break, toggle layout"], "components": ["Command", "Command.Input", "Command.List", "Command.Item"] },
+    { "name": "motion", "url": "https://github.com/motiondivision/motion", "license": "MIT", "install": "npm", "use_for": ["cipher wheel spring rotation", "histogram bars sliding into alignment"], "components": ["motion", "useReducedMotion"] },
+    { "name": "sonner", "url": "https://github.com/emilkowalski/sonner", "license": "MIT", "install": "npm", "use_for": ["copy and export confirmations"], "components": ["Toaster", "toast"] },
+    { "name": "lucide-react", "url": "https://github.com/lucide-icons/lucide", "license": "ISC", "install": "npm", "use_for": ["pane and toolbar icons"], "components": ["Icons used individually, tree-shaken"] }
+  ],
+  "bundle_budget_kb": 300,
+  "a11y": "WCAG-AA",
+  "anti_template_check": {
+    "second_best": "dashboard: a histogram-first analytics view. It lost because the core moment is cause and effect between typing or turning the key and the ciphertext changing, not glancing at numbers.",
+    "wrong_for_this": "a form with a Submit button and a results modal: encryption must update live on every keystroke, and hiding the arithmetic behind a submit step would hide the very math the project is graded on.",
+    "not_in_a_template": "the two-ring cipher wheel whose rotation is the key and whose readout shows (x + k) mod 26 for each letter, plus the histogram that physically slides into alignment with English during a break."
+  }
+}

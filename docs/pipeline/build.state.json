@@ -1,0 +1,187 @@
+{
+  "project": "cipher-lab",
+  "pipeline_version": 2,
+  "dials": {
+    "interactivity": "experimental",
+    "realtime_required": false,
+    "offline_first": false,
+    "visual_polish": "high",
+    "auth": "none",
+    "seo": "none",
+    "model_backed": false,
+    "containers": true
+  },
+  "stages": {
+    "01": {
+      "state": "frozen",
+      "gate": "pass",
+      "gate_run": "2026-11-23T10:14:48.380Z",
+      "unverified": [],
+      "frozen_on": "2026-11-23"
+    },
+    "02": {
+      "state": "frozen",
+      "gate": "pass",
+      "gate_run": "2026-11-23T10:14:48.414Z",
+      "unverified": [],
+      "frozen_on": "2026-11-23"
+    },
+    "03": {
+      "gate": "pass",
+      "gate_run": "2026-11-23T10:14:48.445Z",
+      "unverified": [],
+      "state": "frozen",
+      "frozen_on": "2026-11-23"
+    },
+    "04": {
+      "gate": "pass",
+      "gate_run": "2026-11-23T10:14:48.478Z",
+      "unverified": [],
+      "state": "frozen",
+      "frozen_on": "2026-11-23"
+    },
+    "04b": {
+      "gate": "pass",
+      "gate_run": "2026-11-23T10:14:48.510Z",
+      "unverified": [],
+      "state": "frozen",
+      "frozen_on": "2026-11-23"
+    },
+    "05a": {
+      "state": "skipped",
+      "notes": "no backend (stack.json backend.mode = none)"
+    },
+    "05a5": {
+      "state": "skipped",
+      "notes": "no backend (stack.json backend.mode = none)"
+    },
+    "05c": {
+      "state": "skipped",
+      "notes": "no backend (stack.json backend.mode = none)"
+    },
+    "05d-contract": {
+      "state": "skipped",
+      "notes": "no backend (stack.json backend.mode = none)"
+    },
+    "05d-handlers": {
+      "state": "skipped",
+      "notes": "no backend (stack.json backend.mode = none)"
+    },
+    "06a": {
+      "state": "skipped",
+      "notes": "no backend (no API to generate a client from)"
+    },
+    "05b": {
+      "state": "frozen",
+      "notes": "engine implemented in packages/engine; 91 tests incl. property tests; mutation-checked",
+      "gate": "pass",
+      "gate_run": "2026-11-24T04:05:13.398Z",
+      "unverified": [],
+      "frozen_on": "2026-11-23"
+    },
+    "06b": {
+      "gate": "pass",
+      "gate_run": "2026-11-25T06:15:40.920Z",
+      "unverified": [],
+      "state": "frozen",
+      "notes": "confirmed by user",
+      "frozen_on": "2026-11-25"
+    },
+    "06c": {
+      "gate": "pass",
+      "gate_run": "2026-11-25T06:15:31.240Z",
+      "unverified": [],
+      "state": "frozen",
+      "notes": "confirmed by user",
+      "frozen_on": "2026-11-25"
+    },
+    "07": {
+      "state": "frozen",
+      "gate": "pass",
+      "gate_run": "2026-11-26T02:56:10.474Z",
+      "unverified": [],
+      "notes": "accepted when user moved on to step 8",
+      "frozen_on": "2026-11-25"
+    },
+    "08": {
+      "state": "in_progress",
+      "gate": "pass",
+      "gate_run": "2026-11-25T06:15:21.384Z",
+      "unverified": [
+        "docker verification"
+      ],
+      "notes": "gate passes; real container run not verified (sandbox cannot pull images); awaiting user confirmation"
+    }
+  },
+  "history": [
+    {
+      "ts": "2026-11-23T04:30:00Z",
+      "stage": "01",
+      "event": "started",
+      "reason": "Discrete Math project #17: Simple Cipher & Frequency Analysis Tool (website)"
+    },
+    {
+      "ts": "2026-11-23T04:30:28.231694Z",
+      "stage": "01-02",
+      "event": "frozen",
+      "reason": "user moved on to Step 3 (differentiators raised to 6 at user request)"
+    },
+    {
+      "ts": "2026-11-23T10:05:03.398634Z",
+      "stage": "03-04b",
+      "event": "frozen",
+      "reason": "user confirmed by moving on to Step 5B; backend none, engine isolated"
+    },
+    {
+      "ts": "2026-11-23T10:05:03.398667Z",
+      "stage": "05a..06a",
+      "event": "skipped",
+      "reason": "no backend"
+    },
+    {
+      "ts": "2026-11-23T10:09:09.189076+00:00",
+      "stage": "03",
+      "event": "amended (additive)",
+      "reason": "13 helper functions the engine needed added to domain.json; TraceRow now {position,char,x,formula,unreduced,reduced,out}; breakSuccessRate restricted to caesar|affine"
+    },
+    {
+      "ts": "2026-11-23T10:14:48.344879+00:00",
+      "stage": "05b",
+      "event": "frozen",
+      "reason": "gate passed; user moved on to 06b"
+    },
+    {
+      "ts": "2026-11-25T06:01:21.889Z",
+      "stage": "06c",
+      "event": "gate_passed",
+      "reason": "feature panes, Math Lab, Verify built"
+    },
+    {
+      "ts": "2026-11-25T06:04:47.457Z",
+      "stage": "06b",
+      "event": "frozen"
+    },
+    {
+      "ts": "2026-11-25T06:04:47.457Z",
+      "stage": "06c",
+      "event": "frozen"
+    },
+    {
+      "ts": "2026-11-25T06:09:52.285Z",
+      "stage": "07",
+      "event": "gate_passed",
+      "reason": "client-only adaptation; 07d not applicable"
+    },
+    {
+      "ts": "2026-11-25T06:10:41.245Z",
+      "stage": "07",
+      "event": "frozen"
+    },
+    {
+      "ts": "2026-11-25T06:15:43.494Z",
+      "stage": "08",
+      "event": "gate_passed",
+      "reason": "1 not verified: docker run"
+    }
+  ]
+}

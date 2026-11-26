@@ -1,0 +1,66 @@
+cipher-lab/
+├── package.json                       (npm workspaces: packages/engine, frontend)
+├── .env.example
+├── docker-compose.yml                 (Step 8)
+├── docker-compose.dev.yml             (Step 8)
+├── docs/
+│   ├── pipeline/                      (01..04b artifacts, build.state.json)
+│   ├── report/                        (discrete-math report notes and screenshots)
+│   └── runbooks/                      (Step 9)
+├── scripts/                           (gate-lib.mjs, gate-01..gate-09.mjs)
+├── reports/                           (verification-07a..07h.json)
+├── packages/
+│   └── engine/                        (@cipher-lab/engine: PURE, zero runtime dependencies)
+│       ├── package.json
+│       ├── tsconfig.json              (strict, ES2022, no DOM lib)
+│       └── src/
+│           ├── index.ts               (public API: re-exports only)
+│           ├── errors.ts              (named domain errors: InvalidShift, NotCoprimeWith26, ...)
+│           ├── types.ts               (KeySpec, ValidKey, TraceRow, BreakCandidateData, ...)
+│           ├── modular.ts             (mod, gcd, modInverse)
+│           ├── ciphers.ts             (validateKey, invertSubstitution, encrypt, decrypt, traceCipher)
+│           ├── frequency.ts           (letterCounts, relativeFrequencies, indexOfCoincidence)
+│           ├── english.ts             (English letter-frequency reference table + source note)
+│           ├── breaker.ts             (chiSquared, rankCaesarCandidates, rankAffineCandidates, breakConfidence, transitionCandidate)
+│           ├── algebra.ts             (keySpaceSize, unitsModN, elementOrder, generators)
+│           ├── attack.ts              (solveAffineFromPairs)
+│           ├── stats.ts               (unicityDistance, seededRng, breakSuccessRate, runExhaustiveChecks)
+│           ├── samples.ts             (bundled sample plaintext, ciphertext and corpus)
+│           └── __tests__/             (Vitest: unit + fast-check properties, e.g. D(E(m))=m)
+└── frontend/
+    ├── index.html
+    ├── package.json                   (depends on @cipher-lab/engine)
+    ├── tsconfig.json                  (strict)
+    ├── vite.config.ts
+    ├── eslint.config.js               (typescript-eslint + jsx-a11y; engine import boundary rule)
+    ├── Dockerfile                     (Step 8, multi-stage; build context is the repo root)
+    ├── nginx.conf                     (Step 8: headers incl. CSP connect-src 'none', noindex, real 404)
+    ├── public/
+    │   └── robots.txt                 (disallow all)
+    ├── scripts/
+    │   └── screenshots.ts             (Playwright: capture report screenshots)
+    └── src/
+        ├── main.tsx
+        ├── App.tsx
+        ├── state/
+        │   └── store.ts               (zustand: text, key, cipher type, selected candidate, layout mode)
+        ├── routes/                    (/, /math-lab, /verify, NotFound)
+        ├── features/
+        │   ├── workspace/             (panes: input/output, cipher wheel, substitution board, frequency, trace, break)
+        │   ├── mathlab/               (units table, Cayley table, orbit diagram, key-space counts)
+        │   ├── verify/                (round-trip panel, success curve, known-plaintext panel)
+        │   └── palette/               (command palette actions)
+        ├── components/
+        │   ├── ui/                    (buttons, panes, tables)
+        │   ├── vendor/                (vendor code, if any; the lock file is frontend/vendor.lock.json)
+        │   └── adapters/              (thin wrappers around cmdk, react-resizable-panels, motion, sonner)
+        ├── styles/
+        │   └── tokens.css             (design tokens: palette, type, spacing)
+        └── test/                      (Vitest: UI smoke, a11y checks)
+
+(No backend/ and no database/: stack.json backend.mode is "none". No frontend/src/seo/: seo.mode is "none".
+ No frontend/src/api/: there is no HTTP API; the logical routes in features.json are calls into @cipher-lab/engine.)
+
+Amendment (Step 6B): frontend/src also holds layouts/ (RootLayout, Header, Rail, StatusBar, useShortcuts), panes.ts (the five pane definitions),
+motion/motion.ts (durations and reduced-motion hook), lib/cx.ts, components/adapters/{ResizablePanes,CommandPalette,AppToaster}.tsx and
+components/ui/{AppLink,states,ErrorBoundary,Kbd,PaneFrame}.tsx. No providers/ (auth is none) and no src/api/ (no backend).
