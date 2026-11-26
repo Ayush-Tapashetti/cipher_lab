@@ -1,0 +1,16 @@
+{
+  "name": "cipher-lab",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/engine",
+    "frontend"
+  ],
+  "scripts": {
+    "test": "npm test -w packages/engine && npm test -w frontend",
+    "typecheck": "npm run typecheck -w packages/engine && npm run typecheck -w frontend",
+    "dev": "npm run dev -w frontend",
+    "build": "npm run build -w frontend",
+    "lint": "npm run lint -w frontend"
+  }
+}
