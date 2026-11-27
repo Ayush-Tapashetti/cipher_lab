@@ -1,0 +1,12 @@
+{
+  "feature": "FEAT-004",
+  "route": "/",
+  "page": "src/features/break/BreakPane.tsx",
+  "api": ["rankCaesarCandidates", "rankAffineCandidates", "breakConfidence", "transitionCandidate"],
+  "interaction": "ranked-candidates",
+  "states": ["loading", "empty", "error", "success"],
+  "components": [],
+  "seo": {
+    "indexable": false
+  }
+}

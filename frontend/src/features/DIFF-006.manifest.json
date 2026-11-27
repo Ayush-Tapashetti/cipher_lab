@@ -1,0 +1,12 @@
+{
+  "feature": "DIFF-006",
+  "route": "/verify",
+  "page": "src/features/verify/UnicityCurve.tsx",
+  "api": ["breakSuccessRate", "unicityDistance", "keySpaceBits"],
+  "interaction": "experiment-chart",
+  "states": ["loading", "empty", "error", "success"],
+  "components": [],
+  "seo": {
+    "indexable": false
+  }
+}

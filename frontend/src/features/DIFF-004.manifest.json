@@ -1,0 +1,12 @@
+{
+  "feature": "DIFF-004",
+  "route": "/math-lab",
+  "page": "src/features/mathlab/GroupExplorer.tsx",
+  "api": ["orbit", "elementOrder", "generators", "cayleyTable"],
+  "interaction": "explorer",
+  "states": ["loading", "empty", "error", "success"],
+  "components": [],
+  "seo": {
+    "indexable": false
+  }
+}

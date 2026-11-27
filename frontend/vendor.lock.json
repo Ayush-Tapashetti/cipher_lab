@@ -1,0 +1,61 @@
+{
+  "verified_on": "2026-11-23",
+  "method": "LICENSE file read from node_modules and license field of all 45 production packages checked against the allowlist (MIT, ISC, Apache-2.0, BSD-2/3-Clause, 0BSD; OFL-1.1 for the bundled font only)",
+  "allowlist": ["MIT", "Apache-2.0", "BSD-3-Clause", "BSD-2-Clause", "ISC"],
+  "sources": [
+    {
+      "name": "react-resizable-panels",
+      "version": "4.24.1",
+      "license": "MIT",
+      "url": "https://github.com/bvaughn/react-resizable-panels",
+      "install": "npm",
+      "adapter": "src/components/adapters/ResizablePanes.tsx",
+      "used_for": "tiling panes with draggable, keyboard-resizable dividers"
+    },
+    {
+      "name": "cmdk",
+      "version": "1.1.1",
+      "license": "MIT",
+      "url": "https://github.com/pacocoursey/cmdk",
+      "install": "npm",
+      "adapter": "src/components/adapters/CommandPalette.tsx",
+      "used_for": "command palette"
+    },
+    {
+      "name": "motion",
+      "version": "14.14.0",
+      "license": "MIT",
+      "url": "https://github.com/motiondivision/motion",
+      "install": "npm",
+      "adapter": "src/motion/motion.ts",
+      "used_for": "pane fade-in now; cipher wheel spring and histogram slide in 6C"
+    },
+    {
+      "name": "sonner",
+      "version": "2.0.8",
+      "license": "MIT",
+      "url": "https://github.com/emilkowalski/sonner",
+      "install": "npm",
+      "adapter": "src/components/adapters/AppToaster.tsx",
+      "used_for": "copy and export toasts"
+    },
+    {
+      "name": "lucide-react",
+      "version": "1.77.0",
+      "license": "ISC",
+      "url": "https://github.com/lucide-icons/lucide",
+      "install": "npm",
+      "adapter": null,
+      "used_for": "icons, imported individually"
+    },
+    {
+      "name": "@fontsource-variable/jetbrains-mono",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "url": "https://github.com/fontsource/font-files",
+      "install": "npm",
+      "adapter": null,
+      "used_for": "bundled font (a font, not a component; OFL permits bundling)"
+    }
+  ]
+}

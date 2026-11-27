@@ -1,0 +1,12 @@
+{
+  "feature": "DIFF-001",
+  "route": "/",
+  "page": "src/features/trace/TracePane.tsx",
+  "api": ["traceCipher"],
+  "interaction": "proof-table",
+  "states": ["loading", "empty", "error", "success"],
+  "components": [],
+  "seo": {
+    "indexable": false
+  }
+}

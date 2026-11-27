@@ -1,0 +1,12 @@
+{
+  "feature": "FEAT-001",
+  "route": "/",
+  "page": "src/features/workspace/IoPane.tsx",
+  "api": ["encrypt", "decrypt", "validateKey"],
+  "interaction": "command-first + workspace-split",
+  "states": ["loading", "empty", "error", "success"],
+  "components": ["adapters/ResizablePanes", "adapters/notify"],
+  "seo": {
+    "indexable": false
+  }
+}

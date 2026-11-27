@@ -1,0 +1,40 @@
+{
+  "components": [
+    {
+      "name": "react-resizable-panels",
+      "source": "https://github.com/bvaughn/react-resizable-panels",
+      "license": "MIT",
+      "used_by": ["src/components/adapters/ResizablePanes.tsx"]
+    },
+    {
+      "name": "cmdk",
+      "source": "https://github.com/pacocoursey/cmdk",
+      "license": "MIT",
+      "used_by": ["src/components/adapters/CommandPalette.tsx"]
+    },
+    {
+      "name": "motion",
+      "source": "https://github.com/motiondivision/motion",
+      "license": "MIT",
+      "used_by": ["src/motion/motion.ts"]
+    },
+    {
+      "name": "sonner",
+      "source": "https://github.com/emilkowalski/sonner",
+      "license": "MIT",
+      "used_by": ["src/components/adapters/AppToaster.tsx"]
+    },
+    {
+      "name": "lucide-react",
+      "source": "https://github.com/lucide-icons/lucide",
+      "license": "ISC",
+      "used_by": [null]
+    },
+    {
+      "name": "@fontsource-variable/jetbrains-mono",
+      "source": "https://github.com/fontsource/font-files",
+      "license": "OFL-1.1",
+      "used_by": [null]
+    }
+  ]
+}

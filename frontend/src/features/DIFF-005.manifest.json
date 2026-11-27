@@ -1,0 +1,12 @@
+{
+  "feature": "DIFF-005",
+  "route": "/verify",
+  "page": "src/features/verify/KnownPlaintext.tsx",
+  "api": ["solveAffineFromPairs"],
+  "interaction": "live-solver",
+  "states": ["loading", "empty", "error", "success"],
+  "components": [],
+  "seo": {
+    "indexable": false
+  }
+}

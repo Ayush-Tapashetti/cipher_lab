@@ -1,0 +1,12 @@
+{
+  "feature": "FEAT-003",
+  "route": "/",
+  "page": "src/features/frequency/FrequencyPane.tsx",
+  "api": ["letterCounts", "relativeFrequencies", "indexOfCoincidence"],
+  "interaction": "chart",
+  "states": ["loading", "empty", "error", "success"],
+  "components": [],
+  "seo": {
+    "indexable": false
+  }
+}

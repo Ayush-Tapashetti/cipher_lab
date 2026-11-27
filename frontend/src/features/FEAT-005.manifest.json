@@ -1,0 +1,12 @@
+{
+  "feature": "FEAT-005",
+  "route": "/math-lab",
+  "page": "src/routes/MathLab.tsx",
+  "api": ["unitsModN", "modInverse", "euclidSteps", "keySpaceSize"],
+  "interaction": "explorer",
+  "states": ["loading", "empty", "error", "success"],
+  "components": [],
+  "seo": {
+    "indexable": false
+  }
+}

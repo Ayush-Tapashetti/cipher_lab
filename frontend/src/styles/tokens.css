@@ -1,0 +1,40 @@
+/* Design tokens for Cipher Lab (docs/pipeline/experience.json: hacker terminal, dark, spacious). */
+@theme {
+  --color-ink: #0b0f14;
+  --color-surface: #111820;
+  --color-raised: #16212b;
+  --color-line: #1e2a36;
+  --color-fg: #d7e3ee;
+  --color-muted: #8a9db0;
+  --color-cyan: #22d3ee;
+  --color-emerald: #34d399;
+  --color-amber: #fbbf24;
+  --color-danger: #f87171;
+
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius-pane: 6px;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Motion durations (milliseconds). Shared with src/motion/motion.ts. */
+  --dur-instant: 80ms;
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-wheel: 300ms;
+  --dur-slide: 600ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* prefers-reduced-motion: everything jumps instantly. The text readouts carry the meaning. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 0ms;
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-wheel: 0ms;
+    --dur-slide: 0ms;
+  }
+}

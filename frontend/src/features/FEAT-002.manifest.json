@@ -1,0 +1,12 @@
+{
+  "feature": "FEAT-002",
+  "route": "/",
+  "page": "src/features/workspace/IoPane.tsx",
+  "api": ["decrypt", "invertSubstitution"],
+  "interaction": "workspace-split",
+  "states": ["loading", "empty", "error", "success"],
+  "components": ["adapters/notify"],
+  "seo": {
+    "indexable": false
+  }
+}
