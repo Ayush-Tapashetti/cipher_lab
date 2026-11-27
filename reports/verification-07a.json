@@ -1,0 +1,15 @@
+{
+  "stage": "07a",
+  "status": "pass",
+  "reason": "",
+  "results": [
+    {
+      "name": "engine types",
+      "status": "pass"
+    },
+    {
+      "name": "frontend types",
+      "status": "pass"
+    }
+  ]
+}

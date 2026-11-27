@@ -1,0 +1,11 @@
+{
+  "stage": "07h",
+  "status": "pass",
+  "reason": "",
+  "results": [
+    {
+      "name": "noindex default audit",
+      "status": "pass"
+    }
+  ]
+}

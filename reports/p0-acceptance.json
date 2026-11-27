@@ -1,0 +1,115 @@
+{
+  "ran": "2026-11-26T02:56:09.700Z",
+  "results": [
+    {
+      "check": "FEAT-001 HELLO with shift 3 gives KHOOR",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-001 decrypting KHOOR with shift 3 gives HELLO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-001 affine 5,8 gives IHHWVC SWFRCP",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-001 a=2 is rejected with a gcd reason",
+      "pass": true,
+      "detail": "gcd(2, 26) = 2, not 1, so a has no inverse mod 26 (NotCoprimeWith26)"
+    },
+    {
+      "check": "FEAT-001 last valid output stays visible while the key is invalid",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-002 repeated and missing letters are named",
+      "pass": true,
+      "detail": "repeated: A; missing: Z (NotAPermutation)"
+    },
+    {
+      "check": "FEAT-002 case, spaces, digits and punctuation preserved",
+      "pass": true,
+      "detail": "Itssg, Vgksr 42!"
+    },
+    {
+      "check": "DIFF wheel shows shift 3",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "wheel keyboard: 3 - 1 - 5 = 23 (mod 26)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-005 trace outputs equal the cipher output",
+      "pass": true,
+      "detail": "Trace check: all 12 outputs equal the cipher's output."
+    },
+    {
+      "check": "FEAT-004 sample break: top-ranked key is k = 11 and selected",
+      "pass": true,
+      "detail": "1 k = 11 51.0 Modular arithmetic is the arithmetic of remain"
+    },
+    {
+      "check": "FEAT-004 recovered plaintext starts with the original and confidence is shown",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-004 short ciphertext shows low confidence",
+      "pass": true,
+      "detail": "Recovered plaintext · confidence low Hi there Use this key i"
+    },
+    {
+      "check": "FEAT-003 AAB gives A 66.67% and B 33.33%",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-003 empty input shows an empty state, not NaN",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-005 key space shows 26, 312 and 26!",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "FEAT-005 inverse table lists 12 units",
+      "pass": true,
+      "detail": "12"
+    },
+    {
+      "check": "DIFF-004 group of units shows generators 7, 11, 15, 19",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "DIFF-002 exhaustive checks 375/375",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "DIFF-005 known-plaintext panel recovers a key",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "DIFF-006 success curve renders with a text table",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no console or page errors across the walkthrough",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

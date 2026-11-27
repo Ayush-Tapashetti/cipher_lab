@@ -1,0 +1,23 @@
+{
+  "stage": "07f",
+  "status": "pass",
+  "reason": "",
+  "results": [
+    {
+      "name": "production build",
+      "status": "pass"
+    },
+    {
+      "name": "bundle budget (300 KB gzip)",
+      "status": "pass"
+    },
+    {
+      "name": "vendor audit",
+      "status": "pass"
+    },
+    {
+      "name": "browser walkthrough of P0 checks + axe",
+      "status": "pass"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "stage": "07b",
+  "status": "pass",
+  "reason": "",
+  "results": [
+    {
+      "name": "frontend lint (eslint + jsx-a11y)",
+      "status": "pass"
+    },
+    {
+      "name": "format check (prettier)",
+      "status": "pass"
+    }
+  ]
+}

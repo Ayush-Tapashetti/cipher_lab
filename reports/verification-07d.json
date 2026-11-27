@@ -1,0 +1,6 @@
+{
+  "stage": "07d",
+  "status": "not_applicable",
+  "reason": "no database or migrations (client-only build, decided in Step 4)",
+  "results": []
+}

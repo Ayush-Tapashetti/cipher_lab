@@ -1,0 +1,15 @@
+{
+  "stage": "07g",
+  "status": "pass",
+  "reason": "",
+  "results": [
+    {
+      "name": "break eval (labelled, seeded)",
+      "status": "pass"
+    },
+    {
+      "name": "privacy: no network or storage, engine pure, no external hosts",
+      "status": "pass"
+    }
+  ]
+}

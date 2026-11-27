@@ -1,0 +1,39 @@
+{
+  "tool": "axe-core 4.14.1 (MPL-2.0, dev only)",
+  "ran": "2026-11-26T02:56:09.702Z",
+  "violations": 0,
+  "pages": [
+    {
+      "name": "workspace pane 1",
+      "violations": []
+    },
+    {
+      "name": "workspace pane 2",
+      "violations": []
+    },
+    {
+      "name": "workspace pane 3",
+      "violations": []
+    },
+    {
+      "name": "workspace pane 4",
+      "violations": []
+    },
+    {
+      "name": "workspace pane 5",
+      "violations": []
+    },
+    {
+      "name": "/math-lab",
+      "violations": []
+    },
+    {
+      "name": "/verify",
+      "violations": []
+    },
+    {
+      "name": "/nope",
+      "violations": []
+    }
+  ]
+}

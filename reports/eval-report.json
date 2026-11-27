@@ -1,0 +1,573 @@
+{
+  "eval": "break v1",
+  "threshold": 0.95,
+  "score": 1,
+  "cases": 40,
+  "shortTextRecovery": 0.5,
+  "shortFailuresFlaggedLowConfidence": "20/20",
+  "meanBreakMs": 1.5440192750000008,
+  "fallbackRate": null,
+  "networked": false,
+  "rows": [
+    {
+      "id": "gated/p0/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 4.43522200000001
+    },
+    {
+      "id": "gated/p0/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.2970860000000073
+    },
+    {
+      "id": "gated/p0/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.24014999999999986
+    },
+    {
+      "id": "gated/p0/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.22122400000000653
+    },
+    {
+      "id": "gated/p0/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 10.290797999999995
+    },
+    {
+      "id": "gated/p0/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 6.127393000000012
+    },
+    {
+      "id": "gated/p0/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.225229999999982
+    },
+    {
+      "id": "gated/p0/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 3.5952870000000132
+    },
+    {
+      "id": "gated/p1/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.11407500000001392
+    },
+    {
+      "id": "gated/p1/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.10347699999999804
+    },
+    {
+      "id": "gated/p1/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.1109299999999962
+    },
+    {
+      "id": "gated/p1/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.09206799999998339
+    },
+    {
+      "id": "gated/p1/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.3184870000000046
+    },
+    {
+      "id": "gated/p1/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.7347489999999937
+    },
+    {
+      "id": "gated/p1/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.8407530000000065
+    },
+    {
+      "id": "gated/p1/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 3.473044000000016
+    },
+    {
+      "id": "gated/p2/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.14598100000000613
+    },
+    {
+      "id": "gated/p2/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.1600509999999815
+    },
+    {
+      "id": "gated/p2/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.09400899999999979
+    },
+    {
+      "id": "gated/p2/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.20572200000000862
+    },
+    {
+      "id": "gated/p2/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.4216869999999915
+    },
+    {
+      "id": "gated/p2/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.7518179999999859
+    },
+    {
+      "id": "gated/p2/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 2.22448
+    },
+    {
+      "id": "gated/p2/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 3.398387999999983
+    },
+    {
+      "id": "gated/p3/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.1098570000000052
+    },
+    {
+      "id": "gated/p3/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.09902300000001674
+    },
+    {
+      "id": "gated/p3/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.0954189999999926
+    },
+    {
+      "id": "gated/p3/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.09851799999998434
+    },
+    {
+      "id": "gated/p3/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.569880000000012
+    },
+    {
+      "id": "gated/p3/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.342646000000002
+    },
+    {
+      "id": "gated/p3/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.2952690000000189
+    },
+    {
+      "id": "gated/p3/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 3.2346620000000144
+    },
+    {
+      "id": "gated/p4/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.10395099999999502
+    },
+    {
+      "id": "gated/p4/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.09142800000000761
+    },
+    {
+      "id": "gated/p4/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.09763599999999428
+    },
+    {
+      "id": "gated/p4/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 0.09394499999999084
+    },
+    {
+      "id": "gated/p4/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.2388459999999952
+    },
+    {
+      "id": "gated/p4/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 1.4731749999999977
+    },
+    {
+      "id": "gated/p4/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 2.8500860000000046
+    },
+    {
+      "id": "gated/p4/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "gated",
+      "passed": true,
+      "confidence": "high",
+      "ms": 3.344321000000008
+    },
+    {
+      "id": "short/p0/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.038916000000000395
+    },
+    {
+      "id": "short/p0/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.031770999999992
+    },
+    {
+      "id": "short/p0/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.04063199999998801
+    },
+    {
+      "id": "short/p0/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.045863999999994576
+    },
+    {
+      "id": "short/p0/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.41966600000000653
+    },
+    {
+      "id": "short/p0/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.3958810000000028
+    },
+    {
+      "id": "short/p0/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.5613400000000013
+    },
+    {
+      "id": "short/p0/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.9406370000000095
+    },
+    {
+      "id": "short/p1/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.032641000000012355
+    },
+    {
+      "id": "short/p1/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.029932999999999765
+    },
+    {
+      "id": "short/p1/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.02790200000001164
+    },
+    {
+      "id": "short/p1/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.027653000000015027
+    },
+    {
+      "id": "short/p1/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.3950140000000033
+    },
+    {
+      "id": "short/p1/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.41284900000002267
+    },
+    {
+      "id": "short/p1/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.37882200000001376
+    },
+    {
+      "id": "short/p1/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.4385939999999948
+    },
+    {
+      "id": "short/p2/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.030930999999981168
+    },
+    {
+      "id": "short/p2/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.028820999999993546
+    },
+    {
+      "id": "short/p2/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.029080000000021755
+    },
+    {
+      "id": "short/p2/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.02861399999997616
+    },
+    {
+      "id": "short/p2/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.38732799999999656
+    },
+    {
+      "id": "short/p2/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.4465009999999836
+    },
+    {
+      "id": "short/p2/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.36555400000000304
+    },
+    {
+      "id": "short/p2/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.3844190000000083
+    },
+    {
+      "id": "short/p3/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.02879000000001497
+    },
+    {
+      "id": "short/p3/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.04667600000001926
+    },
+    {
+      "id": "short/p3/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.029496999999992113
+    },
+    {
+      "id": "short/p3/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "short",
+      "passed": true,
+      "confidence": "low",
+      "ms": 0.029049000000014757
+    },
+    {
+      "id": "short/p3/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.3727580000000046
+    },
+    {
+      "id": "short/p3/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.4247179999999844
+    },
+    {
+      "id": "short/p3/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.37676199999998516
+    },
+    {
+      "id": "short/p3/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 1.496483000000012
+    },
+    {
+      "id": "short/p4/{\"cipher\":\"caesar\",\"shift\":1}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.0342109999999991
+    },
+    {
+      "id": "short/p4/{\"cipher\":\"caesar\",\"shift\":7}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.028959000000014612
+    },
+    {
+      "id": "short/p4/{\"cipher\":\"caesar\",\"shift\":13}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.029301000000003796
+    },
+    {
+      "id": "short/p4/{\"cipher\":\"caesar\",\"shift\":25}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.028049000000009983
+    },
+    {
+      "id": "short/p4/{\"cipher\":\"affine\",\"a\":5,\"b\":8}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.4265259999999955
+    },
+    {
+      "id": "short/p4/{\"cipher\":\"affine\",\"a\":9,\"b\":3}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.4207799999999793
+    },
+    {
+      "id": "short/p4/{\"cipher\":\"affine\",\"a\":25,\"b\":25}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.39950600000000236
+    },
+    {
+      "id": "short/p4/{\"cipher\":\"affine\",\"a\":3,\"b\":0}",
+      "set": "short",
+      "passed": false,
+      "confidence": "low",
+      "ms": 0.3670759999999973
+    }
+  ]
+}

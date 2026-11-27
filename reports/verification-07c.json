@@ -1,0 +1,15 @@
+{
+  "stage": "07c",
+  "status": "pass",
+  "reason": "",
+  "results": [
+    {
+      "name": "engine tests (zero network)",
+      "status": "pass"
+    },
+    {
+      "name": "frontend tests (zero network)",
+      "status": "pass"
+    }
+  ]
+}
